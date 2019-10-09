@@ -9,7 +9,7 @@ import MessageBox from '../message-box';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.socket = io(props.serverUrl);
+    this.socket = io(props.serverUrl, { path: props.path });
     this.state = {
       visible: false,
       sentMessage: null,

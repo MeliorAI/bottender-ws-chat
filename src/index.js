@@ -3,12 +3,13 @@ import Widget from "./components/chatbox";
 
 const defaults = {
   containerId: 'bottender-chat-mount',
-  serverUrl: 'http://localhost:3000'
+  serverUrl: 'http://localhost:3000',
+  path: "/socket.io"
 }
 
 function renderWidget (opts) {
   render((
-    <Widget serverUrl={opts.serverUrl} />
+    <Widget serverUrl={opts.serverUrl} path={opts.path} />
   ), document.getElementById(opts.containerId));
 }
 
