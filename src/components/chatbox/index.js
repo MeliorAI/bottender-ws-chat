@@ -26,8 +26,8 @@ export default class App extends Component {
     this.setState({
       messages: this.state
         .messages
-        .concat({ 
-          content: msg, 
+        .concat({
+          content: msg,
           type: 'message'
       })
     })
@@ -37,7 +37,7 @@ export default class App extends Component {
     this.setState({
       messages: this.state
         .messages
-        .concat({ 
+        .concat({
           content: typeof(msg) === 'string' ? msg : msg.content,
           type: typeof(msg) === 'string' ? 'reply' : msg.type,
         })
@@ -45,6 +45,7 @@ export default class App extends Component {
   }
 
   openChat () {
+    this.socket.emit('chat message', { '/start', location: window.location.href });
     this.setState({ visible: true })
   }
 
@@ -61,7 +62,7 @@ export default class App extends Component {
             onClick={this.closeChat}>
             Close chat
           </button>
-          <MessagesList 
+          <MessagesList
             socket={this.socket}
             messages={this.state.messages}
             handleMessage={this.handleMessage} />
